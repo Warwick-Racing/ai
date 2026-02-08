@@ -1,5 +1,5 @@
 import { ArrowRight, Zap, Users, Trophy } from "lucide-react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 // 车辆图片
 const testCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
