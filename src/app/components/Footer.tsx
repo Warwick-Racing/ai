@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { Mail, MapPin, Instagram, Linkedin, Twitter } from "lucide-react";
 
 // Logo图片
