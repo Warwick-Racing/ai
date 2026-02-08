@@ -27,7 +27,6 @@ jobs:
       - name: Install dependencies
         env:
           NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-          NPM_CONFIG_REPLACE_REGISTRY_HOST: always
         run: |
           set -euo pipefail
           node -v
