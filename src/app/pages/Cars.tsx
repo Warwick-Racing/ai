@@ -1,8 +1,8 @@
 import { Cpu, Camera, Gauge, Zap } from "lucide-react";
 
 // 车辆图片
-const aiCar = "/assets/ai-development-car.jpg";
-const testCar = "/assets/formula-student-car.jpg";
+const aiCar = `${import.meta.env.BASE_URL}assets/ai-development-car.jpg`;
+const testCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
 
 export default function Cars() {
   const specs = [

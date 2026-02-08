@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { Mail, MapPin, Instagram, Linkedin, Twitter } from "lucide-react";
 
 // Logo图片
-const logoGreenSvg = "/assets/logo-green.svg";
+const logoGreenSvg = `${import.meta.env.BASE_URL}assets/logo-green.svg`;
 
 export default function Footer() {
   return (
