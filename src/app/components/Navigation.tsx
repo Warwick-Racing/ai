@@ -46,9 +46,6 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <button className="bg-green-500 hover:bg-green-600 text-black px-6 py-2 text-sm font-semibold tracking-wider transition-colors">
-              JOIN US
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -75,9 +72,6 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
-            <button className="w-full mt-4 bg-green-500 hover:bg-green-600 text-black px-6 py-2 text-sm font-semibold tracking-wider transition-colors">
-              JOIN US
-            </button>
           </div>
         )}
       </div>
