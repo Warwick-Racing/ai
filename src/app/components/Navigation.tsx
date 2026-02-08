@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 // Logo图片
-const logoGreen = "/assets/logo-green.svg";
+const logoGreen = `${import.meta.env.BASE_URL}assets/logo-green.svg`;
 
 export default function Navigation() {
   const location = useLocation();

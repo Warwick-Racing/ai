@@ -2,7 +2,7 @@ import { ArrowRight, Zap, Users, Trophy } from "lucide-react";
 import { Link } from "react-router";
 
 // 车辆图片
-const testCar = "/assets/formula-student-car.jpg";
+const testCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
 
 export default function Home() {
   return (
