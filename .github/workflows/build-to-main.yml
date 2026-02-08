@@ -27,8 +27,8 @@ jobs:
       - name: Install dependencies
         run: |
           npm config delete production || true
-          npm config set omit ""
-          npm ci
+          npm config delete omit || true
+          npm ci --include=dev
           test -f node_modules/vite/package.json
 
       - name: Build
