@@ -1,71 +1,164 @@
-import { Users, Briefcase, Code, Wrench, Brain, Cpu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Briefcase, Brain, ChevronLeft, ChevronRight, Code, Cpu, X } from "lucide-react";
+
+const aiCar = `${import.meta.env.BASE_URL}assets/ai-development-car.jpg`;
+const formulaCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
 
 export default function Team() {
   const departments = [
     {
       icon: <Brain className="w-12 h-12 text-green-500" />,
-      name: "AI & ML Team",
-      description: "Focusing on machine learning and artificial intelligence algorithm development, driving innovation and advancement in intelligent racing technology",
-      members: ["AI Engineers", "Machine Learning Experts", "Computer Vision Specialists"],
+      name: "AI & Perception",
+      description:
+        "Designs computer vision, sensor fusion, and model pipelines for robust autonomous perception.",
+      members: ["Perception Engineers", "Machine Learning Engineers", "Computer Vision Specialists"],
     },
     {
       icon: <Code className="w-12 h-12 text-green-500" />,
-      name: "Software Team",
-      description: "Responsible for software development, system architecture design, and software engineering practices, building stable and reliable software platforms",
-      members: ["Software Engineers", "System Architects", "DevOps Engineers"],
+      name: "Autonomy Software",
+      description:
+        "Builds planning, controls, and simulation tooling that powers reliable race-day autonomy.",
+      members: ["Planning Engineers", "Control Engineers", "Simulation Developers"],
     },
     {
       icon: <Cpu className="w-12 h-12 text-green-500" />,
-      name: "Hardware Team",
-      description: "Focusing on hardware design, electronic systems, and embedded development, providing powerful hardware support for racing vehicles",
-      members: ["Hardware Engineers", "Embedded Systems Engineers", "Electronics Specialists"],
+      name: "Electronics & Embedded",
+      description:
+        "Develops onboard electronics, embedded firmware, and integration infrastructure for the vehicle.",
+      members: ["Embedded Engineers", "Electronics Engineers", "Systems Integration Engineers"],
     },
     {
       icon: <Briefcase className="w-12 h-12 text-green-500" />,
-      name: "Org Team",
-      description: "Responsible for team organization management, project coordination, and operational support, ensuring efficient team collaboration and smooth project progress",
-      members: ["Project Managers", "Operations Coordinators", "Team Administrators"],
+      name: "Operations & Partnerships",
+      description:
+        "Leads delivery planning, sponsorship relationships, and cross-team program coordination.",
+      members: ["Program Managers", "Partnership Leads", "Operations Coordinators"],
     },
   ];
 
   const teamMembers = [
     {
-      name: "AI & ML Team",
+      name: "AI & Perception",
       roles: [
-        "AI Engineers",
-        "Machine Learning Experts",
+        "Perception Engineers",
+        "Machine Learning Engineers",
         "Computer Vision Specialists",
-        "Data Scientists",
+        "Data Analysts",
       ],
     },
     {
-      name: "Software Team",
+      name: "Autonomy Software",
       roles: [
-        "Software Engineers",
-        "System Architects",
-        "DevOps Engineers",
-        "Full Stack Developers",
+        "Planning Engineers",
+        "Control Engineers",
+        "Software Reliability Engineers",
+        "Tooling Developers",
       ],
     },
     {
-      name: "Hardware Team",
+      name: "Electronics & Embedded",
       roles: [
-        "Hardware Engineers",
-        "Embedded Systems Engineers",
-        "Electronics Specialists",
+        "Embedded Engineers",
+        "Electronics Engineers",
         "PCB Designers",
+        "Systems Integration Engineers",
       ],
     },
     {
-      name: "Org Team",
+      name: "Operations & Partnerships",
       roles: [
-        "Project Managers",
+        "Program Managers",
         "Operations Coordinators",
-        "Team Administrators",
-        "Event Organizers",
+        "Partnership Leads",
+        "Events Coordinators",
       ],
     },
   ];
+
+  const galleryImages = [
+    {
+      src: formulaCar,
+      alt: "Warwick AI Racing vehicle at track test",
+      caption: "Track testing and systems validation ahead of key milestones.",
+    },
+    {
+      src: aiCar,
+      alt: "AI development vehicle on campus",
+      caption: "Development platform used for rapid autonomy iterations.",
+    },
+    {
+      src: formulaCar,
+      alt: "Autonomous race car profile view",
+      caption: "Competition platform prepared for Formula Student AI.",
+    },
+    {
+      src: aiCar,
+      alt: "Sensor-equipped development car",
+      caption: "Integrated sensor stack supporting perception and control experiments.",
+    },
+    {
+      src: formulaCar,
+      alt: "Team vehicle close-up in paddock",
+      caption: "Race-day setup with final pre-run calibration checks.",
+    },
+    {
+      src: aiCar,
+      alt: "Prototype vehicle during testing",
+      caption: "Prototype runs used to benchmark autonomous performance.",
+    },
+  ];
+
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const isGalleryOpen = selectedIndex !== null;
+
+  const closeGallery = () => setSelectedIndex(null);
+
+  const showPreviousImage = () => {
+    setSelectedIndex((currentIndex) => {
+      if (currentIndex === null) {
+        return 0;
+      }
+      return (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    });
+  };
+
+  const showNextImage = () => {
+    setSelectedIndex((currentIndex) => {
+      if (currentIndex === null) {
+        return 0;
+      }
+      return (currentIndex + 1) % galleryImages.length;
+    });
+  };
+
+  useEffect(() => {
+    if (!isGalleryOpen) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeGallery();
+      }
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        showPreviousImage();
+      }
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        showNextImage();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isGalleryOpen]);
 
   return (
     <div className="pt-20">
@@ -137,23 +230,82 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Join Us Section */}
+      {/* Photo Gallery */}
       <section className="py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
-          <Users className="w-16 h-16 text-green-500 mx-auto mb-6" />
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            JOIN OUR TEAM
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
+            PHOTO GALLERY
           </h2>
-          <p className="text-lg text-gray-300 mb-8">
-            We're always looking for passionate students who want to be part of something 
-            extraordinary. Whether you're an engineer, programmer, designer, or business 
-            student, there's a place for you on our team.
-          </p>
-          <button className="bg-green-500 hover:bg-green-600 text-black px-8 py-4 text-lg font-semibold tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
-            APPLY NOW
-          </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {galleryImages.map((image, index) => (
+              <button
+                key={index}
+                type="button"
+                onClick={() => setSelectedIndex(index)}
+                className="group text-left bg-zinc-900 border border-zinc-800 hover:border-green-500 transition-colors overflow-hidden"
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="p-4">
+                  <p className="text-sm text-gray-300">{image.caption}</p>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </section>
+
+      {isGalleryOpen && selectedIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Team photo gallery"
+          onClick={closeGallery}
+        >
+          <div
+            className="relative w-full max-w-5xl bg-zinc-950 border border-zinc-700"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={closeGallery}
+              className="absolute top-4 right-4 z-10 text-white hover:text-green-500 transition-colors"
+              aria-label="Close gallery"
+            >
+              <X size={28} />
+            </button>
+            <button
+              type="button"
+              onClick={showPreviousImage}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/70 border border-zinc-700 text-white hover:text-green-500 transition-colors"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              type="button"
+              onClick={showNextImage}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/70 border border-zinc-700 text-white hover:text-green-500 transition-colors"
+              aria-label="Next image"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            <img
+              src={galleryImages[selectedIndex].src}
+              alt={galleryImages[selectedIndex].alt}
+              className="w-full max-h-[70vh] object-contain bg-black"
+            />
+            <div className="px-6 py-4 border-t border-zinc-800">
+              <p className="text-gray-300">{galleryImages[selectedIndex].caption}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
