@@ -1,4 +1,4 @@
-name: Build to main
+name: Build to blog
 
 on:
   push:
@@ -33,10 +33,10 @@ jobs:
       - name: Add 404 fallback
         run: cp dist/index.html dist/404.html
 
-      - name: Publish dist to main
+      - name: Publish dist to blog
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
+          publish_branch: blog
           publish_dir: ./dist
           force_orphan: true
