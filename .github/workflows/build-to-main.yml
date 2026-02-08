@@ -3,7 +3,7 @@ name: Build to blog
 on:
   push:
     branches:
-      - source-code
+      - main
   workflow_dispatch:
 
 permissions:
@@ -13,10 +13,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source-code
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
-          ref: source-code
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v4
