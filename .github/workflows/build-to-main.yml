@@ -21,14 +21,30 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: '18.20.8'
 
       - name: Install dependencies
         run: |
+          set -euo pipefail
+          node -v
+          npm -v
           npm config delete production || true
           npm config delete omit || true
-          npm ci --include=dev
+          npm cache clean --force
+          for i in 1 2; do
+            if npm ci --include=dev --no-audit --no-fund; then
+              break
+            fi
+            if [ "$i" -eq 2 ]; then
+              echo "npm ci failed twice; dumping npm debug logs"
+              ls -la ~/.npm/_logs || true
+              tail -n 300 ~/.npm/_logs/*-debug-0.log || true
+              exit 1
+            fi
+            rm -rf node_modules
+            npm cache clean --force
+            sleep 2
+          done
           test -f node_modules/vite/package.json
 
       - name: Build
