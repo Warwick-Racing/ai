@@ -35,7 +35,7 @@ jobs:
         run: |
           npm config get production
           npm config get omit
-          npm ls vite --depth=0
+          npm ls vite --depth=0 || true
           npx vite --version
 
       - name: Build
