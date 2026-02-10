@@ -30,7 +30,7 @@ export default function Events() {
       title: "Team Launch Event",
       date: "October 2025",
       location: "WMG, University of Warwick",
-      achievement: "Successfully launched Warwick AI Racing team",
+      achievement: "Successfully launched Warwick Racing AI team",
     },
     {
       title: "Initial Testing Phase",

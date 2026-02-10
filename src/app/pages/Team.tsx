@@ -1,164 +1,37 @@
-import { useEffect, useState } from "react";
-import { Briefcase, Brain, ChevronLeft, ChevronRight, Code, Cpu, X } from "lucide-react";
-
-const aiCar = `${import.meta.env.BASE_URL}assets/ai-development-car.jpg`;
-const formulaCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
+import { Link } from "react-router-dom";
+import { Briefcase, Brain, Code, Cpu } from "lucide-react";
 
 export default function Team() {
   const departments = [
     {
       icon: <Brain className="w-12 h-12 text-green-500" />,
-      name: "AI & Perception",
+      name: "Machine Learning & AI",
       description:
         "Designs computer vision, sensor fusion, and model pipelines for robust autonomous perception.",
       members: ["Perception Engineers", "Machine Learning Engineers", "Computer Vision Specialists"],
     },
     {
       icon: <Code className="w-12 h-12 text-green-500" />,
-      name: "Autonomy Software",
+      name: "Software",
       description:
         "Builds planning, controls, and simulation tooling that powers reliable race-day autonomy.",
       members: ["Planning Engineers", "Control Engineers", "Simulation Developers"],
     },
     {
       icon: <Cpu className="w-12 h-12 text-green-500" />,
-      name: "Electronics & Embedded",
+      name: "Hardware",
       description:
         "Develops onboard electronics, embedded firmware, and integration infrastructure for the vehicle.",
       members: ["Embedded Engineers", "Electronics Engineers", "Systems Integration Engineers"],
     },
     {
       icon: <Briefcase className="w-12 h-12 text-green-500" />,
-      name: "Operations & Partnerships",
+      name: "Team Operations",
       description:
         "Leads delivery planning, sponsorship relationships, and cross-team program coordination.",
       members: ["Program Managers", "Partnership Leads", "Operations Coordinators"],
     },
   ];
-
-  const teamMembers = [
-    {
-      name: "AI & Perception",
-      roles: [
-        "Perception Engineers",
-        "Machine Learning Engineers",
-        "Computer Vision Specialists",
-        "Data Analysts",
-      ],
-    },
-    {
-      name: "Autonomy Software",
-      roles: [
-        "Planning Engineers",
-        "Control Engineers",
-        "Software Reliability Engineers",
-        "Tooling Developers",
-      ],
-    },
-    {
-      name: "Electronics & Embedded",
-      roles: [
-        "Embedded Engineers",
-        "Electronics Engineers",
-        "PCB Designers",
-        "Systems Integration Engineers",
-      ],
-    },
-    {
-      name: "Operations & Partnerships",
-      roles: [
-        "Program Managers",
-        "Operations Coordinators",
-        "Partnership Leads",
-        "Events Coordinators",
-      ],
-    },
-  ];
-
-  const galleryImages = [
-    {
-      src: formulaCar,
-      alt: "Warwick AI Racing vehicle at track test",
-      caption: "Track testing and systems validation ahead of key milestones.",
-    },
-    {
-      src: aiCar,
-      alt: "AI development vehicle on campus",
-      caption: "Development platform used for rapid autonomy iterations.",
-    },
-    {
-      src: formulaCar,
-      alt: "Autonomous race car profile view",
-      caption: "Competition platform prepared for Formula Student AI.",
-    },
-    {
-      src: aiCar,
-      alt: "Sensor-equipped development car",
-      caption: "Integrated sensor stack supporting perception and control experiments.",
-    },
-    {
-      src: formulaCar,
-      alt: "Team vehicle close-up in paddock",
-      caption: "Race-day setup with final pre-run calibration checks.",
-    },
-    {
-      src: aiCar,
-      alt: "Prototype vehicle during testing",
-      caption: "Prototype runs used to benchmark autonomous performance.",
-    },
-  ];
-
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const isGalleryOpen = selectedIndex !== null;
-
-  const closeGallery = () => setSelectedIndex(null);
-
-  const showPreviousImage = () => {
-    setSelectedIndex((currentIndex) => {
-      if (currentIndex === null) {
-        return 0;
-      }
-      return (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    });
-  };
-
-  const showNextImage = () => {
-    setSelectedIndex((currentIndex) => {
-      if (currentIndex === null) {
-        return 0;
-      }
-      return (currentIndex + 1) % galleryImages.length;
-    });
-  };
-
-  useEffect(() => {
-    if (!isGalleryOpen) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeGallery();
-      }
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        showPreviousImage();
-      }
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        showNextImage();
-      }
-    };
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isGalleryOpen]);
 
   return (
     <div className="pt-20">
@@ -175,11 +48,11 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Departments Section */}
+      {/* Sub-team Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            OUR DEPARTMENTS
+            OUR SUB-TEAMS
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {departments.map((dept, index) => (
@@ -204,108 +77,21 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Team Structure */}
+      {/* Gallery CTA */}
       <section className="py-20 px-4 bg-zinc-900">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            TEAM STRUCTURE
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((section, index) => (
-              <div key={index} className="bg-black p-8 border border-zinc-800">
-                <h3 className="text-xl font-bold mb-6 text-green-500">
-                  {section.name}
-                </h3>
-                <ul className="space-y-3">
-                  {section.roles.map((role, i) => (
-                    <li key={i} className="flex items-start gap-2 text-gray-300">
-                      <span className="text-green-500 mt-1">→</span>
-                      {role}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Photo Gallery */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
-            PHOTO GALLERY
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((image, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => setSelectedIndex(index)}
-                className="group text-left bg-zinc-900 border border-zinc-800 hover:border-green-500 transition-colors overflow-hidden"
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="p-4">
-                  <p className="text-sm text-gray-300">{image.caption}</p>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {isGalleryOpen && selectedIndex !== null && (
-        <div
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Team photo gallery"
-          onClick={closeGallery}
-        >
-          <div
-            className="relative w-full max-w-5xl bg-zinc-950 border border-zinc-700"
-            onClick={(event) => event.stopPropagation()}
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">PHOTO GALLERY</h2>
+          <p className="text-gray-300 mb-10 text-lg">
+            Explore track tests, development milestones, and competition preparation.
+          </p>
+          <Link
+            to="/gallery"
+            className="inline-block bg-green-500 hover:bg-green-600 text-black px-8 py-4 text-base font-semibold tracking-wider transition-colors"
           >
-            <button
-              type="button"
-              onClick={closeGallery}
-              className="absolute top-4 right-4 z-10 text-white hover:text-green-500 transition-colors"
-              aria-label="Close gallery"
-            >
-              <X size={28} />
-            </button>
-            <button
-              type="button"
-              onClick={showPreviousImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/70 border border-zinc-700 text-white hover:text-green-500 transition-colors"
-              aria-label="Previous image"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              type="button"
-              onClick={showNextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/70 border border-zinc-700 text-white hover:text-green-500 transition-colors"
-              aria-label="Next image"
-            >
-              <ChevronRight size={24} />
-            </button>
-
-            <img
-              src={galleryImages[selectedIndex].src}
-              alt={galleryImages[selectedIndex].alt}
-              className="w-full max-h-[70vh] object-contain bg-black"
-            />
-            <div className="px-6 py-4 border-t border-zinc-800">
-              <p className="text-gray-300">{galleryImages[selectedIndex].caption}</p>
-            </div>
-          </div>
+            OPEN GALLERY
+          </Link>
         </div>
-      )}
+      </section>
     </div>
   );
 }
