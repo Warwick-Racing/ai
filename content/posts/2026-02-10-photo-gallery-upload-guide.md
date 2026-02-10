@@ -1,37 +1,59 @@
 ---
-title: "Photo Gallery Upload Quick Guide"
+title: "Gallery + Team Photos Upload Guide"
 date: "2026-02-10"
 author: "Sibo"
-tags: ["guide"]
-summary: "How to add new photos to the gallery by uploading files to a fixed folder in main."
+tags: ["guide", "gallery", "team"]
+summary: "How to upload year-based gallery photos and sub-team carousel photos so both /gallery and /team update automatically."
 ---
 
-## What This Is
+## What This Guide Covers
 
-This is a quick guide for adding photos to the `/gallery` page.
+This guide explains how to upload images for:
 
-## Upload Path
+- `/gallery` (grouped by year)
+- `/team` (sub-team carousels)
 
-You can find the project repository here:  
+## Repository
+
+Project repo:  
 [github.com/Warwick-Racing/ai/](https://github.com/Warwick-Racing/ai/)
 
-Put image files in:
+## Folder Structure
+
+Upload images under:
 
 `content/gallery/`
 
-## File Naming
+Use this structure:
 
-Use clean, URL-safe names (recommended):
+```text
+content/gallery/
+  2025/
+    <competition photos>
+  2026/
+    <competition photos>
+    ml-ai/
+      <ML & AI sub-team photos>
+    software/
+      <Software sub-team photos>
+    hardware/
+      <Hardware sub-team photos>
+    operations/
+      <Team Operations sub-team photos>
+```
+
+## Naming Rules
+
+Recommended:
 
 - lowercase letters
 - numbers
 - hyphen `-`
 
-Example:
+Examples:
 
-`2026-02-10-track-test-01.jpg`
-
-The filename (without extension) is used as the image description automatically.
+- `content/gallery/2025/autocross-run-01.jpg`
+- `content/gallery/2026/software/simulator-pipeline-02.jpg`
 
 ## Supported Formats
 
@@ -43,16 +65,28 @@ The filename (without extension) is used as the image description automatically.
 - `.gif`
 - `.svg`
 
+## Where Images Appear
+
+- `/gallery` reads year sections from `content/gallery/<year>/`
+- `/team` sub-team carousels read from `content/gallery/<year>/<subteam>/`
+- Valid `<subteam>` values are exactly:
+  - `ml-ai`
+  - `software`
+  - `hardware`
+  - `operations`
+
 ## Publish Steps
 
 1. Open the repo on GitHub (branch: `main`)
-2. Go to `content/gallery/`
+2. Go to the target folder under `content/gallery/`
 3. Click `Add file` -> `Upload files`
 4. Commit changes to `main`
 5. Wait for GitHub Action build/deploy
-6. Open `/gallery` to verify
+6. Verify:
+   - Open `/gallery` and check year section placement
+   - Open `/team` and check sub-team carousel updates
 
 ## Notes
 
-- The gallery is no longer fixed to 6 images.
-- It renders all images found in `content/gallery/` at build time.
+- Gallery cards no longer show file names under images.
+- If a year or sub-team folder has no images yet, the page shows a "coming soon" placeholder.

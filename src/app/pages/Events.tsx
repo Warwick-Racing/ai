@@ -10,20 +10,6 @@ export default function Events() {
       description: "Our main competition event where we'll showcase our autonomous racing capabilities.",
       status: "Upcoming",
     },
-    {
-      title: "Testing Day - Spring Session",
-      date: "March 2026",
-      location: "Warwick Campus",
-      description: "Extensive testing of autonomous systems and vehicle dynamics.",
-      status: "Upcoming",
-    },
-    {
-      title: "Sponsor Showcase Day",
-      date: "April 2026",
-      location: "University of Warwick",
-      description: "Demonstrating our progress to sponsors and stakeholders.",
-      status: "Upcoming",
-    },
   ];
 
   const pastEvents = [

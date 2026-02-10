@@ -1,6 +1,6 @@
 import { Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import formulaStudentRacer from "/content/gallery/warwick-formula-student-racer.jpg";
+import formulaStudentRacer from "/content/gallery/2025/warwick-formula-student-racer.jpg";
 
 type SponsorshipTier = {
   id: string;
@@ -18,7 +18,7 @@ type SponsorshipTier = {
 const tiers: SponsorshipTier[] = [
   {
     id: "gold",
-    name: "Gold Tier",
+    name: "Gold Tier:",
     headline: "Become Part Of Our Team",
     amount: "£3001+",
     surfaceClassName:
@@ -33,15 +33,16 @@ const tiers: SponsorshipTier[] = [
       "bg-[linear-gradient(115deg,rgba(255,255,255,0)_20%,rgba(255,248,220,0.34)_35%,rgba(255,255,255,0.07)_52%,rgba(255,255,255,0)_70%)]",
     benefits: [
       "Includes all Silver Tier benefits",
-      "WRAI website presence",
-      "Private events (hackathon, networking, presentations)",
-      "Logo on sensor plate",
-      "Tour of WMG",
+      "Presence on Warwick Racing AI website",
+      "Logo on our sensor plate/test car",
+      "Logo on our team wear",
+      "Invitation to private events",
+      "Workshop tour",
     ],
   },
   {
     id: "silver",
-    name: "Silver Tier",
+    name: "Silver Tier:",
     headline: "Support Our Progress",
     amount: "£1000-3000",
     surfaceClassName:
@@ -55,9 +56,9 @@ const tiers: SponsorshipTier[] = [
     shineClassName:
       "bg-[linear-gradient(115deg,rgba(255,255,255,0)_22%,rgba(255,255,255,0.4)_36%,rgba(255,255,255,0.08)_53%,rgba(255,255,255,0)_72%)]",
     benefits: [
-      "Student access",
-      "Logo on apparel",
-      "Company profile awareness",
+      "Direct access to 30+ motivated students with industry standard experience from a top Russell Group University",
+      "Company awareness to Warwick students",
+      "Internship and placement opportunities",
     ],
   },
 ];

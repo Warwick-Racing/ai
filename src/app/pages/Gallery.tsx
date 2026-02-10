@@ -1,31 +1,35 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { getGalleryImages } from "@/app/lib/gallery";
+import { type GalleryImage, getGalleryImagesByYear } from "@/app/lib/gallery";
 import PageHeader from "@/app/components/PageHeader";
 
 export default function Gallery() {
-  const galleryImages = getGalleryImages();
+  const galleryGroups = getGalleryImagesByYear();
+  const hasImages = galleryGroups.some((group) => group.images.length > 0);
+  const [activeImages, setActiveImages] = useState<GalleryImage[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const isGalleryOpen = selectedIndex !== null;
-  const hasImages = galleryImages.length > 0;
 
-  const closeGallery = () => setSelectedIndex(null);
+  const closeGallery = () => {
+    setSelectedIndex(null);
+    setActiveImages([]);
+  };
 
   const showPreviousImage = () => {
     setSelectedIndex((currentIndex) => {
-      if (currentIndex === null) {
+      if (currentIndex === null || activeImages.length === 0) {
         return 0;
       }
-      return (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      return (currentIndex - 1 + activeImages.length) % activeImages.length;
     });
   };
 
   const showNextImage = () => {
     setSelectedIndex((currentIndex) => {
-      if (currentIndex === null) {
+      if (currentIndex === null || activeImages.length === 0) {
         return 0;
       }
-      return (currentIndex + 1) % galleryImages.length;
+      return (currentIndex + 1) % activeImages.length;
     });
   };
 
@@ -68,35 +72,52 @@ export default function Gallery() {
 
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          {hasImages ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {galleryImages.map((image, index) => (
-                <button
-                  key={image.src}
-                  type="button"
-                  onClick={() => setSelectedIndex(index)}
-                  className="group text-left bg-zinc-900 border border-zinc-800 hover:border-green-500 transition-colors overflow-hidden"
+          <div className="space-y-16">
+            {galleryGroups.map((group) => (
+              <section key={group.year} aria-labelledby={`gallery-year-${group.year}`}>
+                <h2
+                  id={`gallery-year-${group.year}`}
+                  className="text-4xl md:text-5xl font-bold mb-8"
                 >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="p-4">
-                    <p className="text-sm text-gray-300">{image.caption}</p>
+                  {group.year}
+                </h2>
+                {group.images.length > 0 ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {group.images.map((image, index) => (
+                      <button
+                        key={image.src}
+                        type="button"
+                        onClick={() => {
+                          setActiveImages(group.images);
+                          setSelectedIndex(index);
+                        }}
+                        className="group text-left bg-zinc-900 border border-zinc-800 hover:border-green-500 transition-colors overflow-hidden"
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </button>
+                    ))}
                   </div>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <div className="bg-zinc-900 border border-zinc-800 p-8 text-gray-300">
-              No images found. Upload photos to <code>content/gallery/</code>. The filename will be used as the description.
-            </div>
+                ) : (
+                  <div className="bg-zinc-900 border border-zinc-800 p-8 text-gray-300">
+                    Photos coming soon for {group.year}.
+                  </div>
+                )}
+              </section>
+            ))}
+          </div>
+          {!hasImages && (
+            <p className="mt-10 text-sm text-gray-400">
+              Upload images into <code>content/gallery/2025/</code> or <code>content/gallery/2026/</code>.
+            </p>
           )}
         </div>
       </section>
 
-      {hasImages && isGalleryOpen && selectedIndex !== null && (
+      {hasImages && isGalleryOpen && selectedIndex !== null && activeImages.length > 0 && (
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           role="dialog"
@@ -134,13 +155,10 @@ export default function Gallery() {
             </button>
 
             <img
-              src={galleryImages[selectedIndex].src}
-              alt={galleryImages[selectedIndex].alt}
+              src={activeImages[selectedIndex].src}
+              alt={activeImages[selectedIndex].alt}
               className="w-full max-h-[70vh] object-contain bg-black"
             />
-            <div className="px-6 py-4 border-t border-zinc-800">
-              <p className="text-gray-300">{galleryImages[selectedIndex].caption}</p>
-            </div>
           </div>
         </div>
       )}
