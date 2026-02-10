@@ -16,6 +16,7 @@ export default function Navigation() {
     { path: "/gallery", label: "PHOTO GALLERY" },
     { path: "/cars", label: "CARS" },
     { path: "/events", label: "EVENTS" },
+    { path: "/sponsorship", label: "SPONSORSHIP" },
     { path: "/contact", label: "CONTACT US" },
   ];
 
@@ -89,6 +90,7 @@ export default function Navigation() {
           </div>
         )}
       </div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-green-500/70" />
     </nav>
   );
 }

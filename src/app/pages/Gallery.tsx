@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { getGalleryImages } from "@/app/lib/gallery";
+import PageHeader from "@/app/components/PageHeader";
 
 export default function Gallery() {
   const galleryImages = getGalleryImages();
@@ -59,14 +60,11 @@ export default function Gallery() {
 
   return (
     <div className="pt-20">
-      <section className="relative py-32 px-4 bg-zinc-900">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">PHOTO GALLERY</h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            A visual archive of testing, engineering progress, and race preparation.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Photo Gallery"
+        description="A visual archive of testing, engineering progress, and race preparation."
+        containerClassName="max-w-7xl"
+      />
 
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">

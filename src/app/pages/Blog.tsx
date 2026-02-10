@@ -31,12 +31,6 @@ export default function Blog() {
 
   return (
     <div className="pt-20">
-      <section className="py-16 px-4 bg-zinc-900 border-b border-zinc-800">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4">BLOG</h1>
-        </div>
-      </section>
-
       <section className="py-6 px-4 bg-black border-b border-zinc-800">
         <div className="max-w-6xl mx-auto flex flex-wrap gap-2">
           <button
