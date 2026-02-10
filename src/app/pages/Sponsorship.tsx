@@ -8,8 +8,8 @@ type SponsorshipTier = {
   headline: string;
   amount: string;
   headerClassName: string;
-  cardClassName: string;
   bodyClassName: string;
+  shadowClassName: string;
   benefits: string[];
 };
 
@@ -20,8 +20,9 @@ const tiers: SponsorshipTier[] = [
     headline: "Become Part Of Our Team",
     amount: "£3001+",
     headerClassName: "bg-[#D4AF37] text-black",
-    cardClassName: "border-[#D4AF37]",
     bodyClassName: "bg-[#2e250d]/55",
+    shadowClassName:
+      "shadow-[0_14px_34px_rgba(212,175,55,0.16)] md:hover:shadow-[0_22px_52px_rgba(212,175,55,0.26)]",
     benefits: [
       "Includes all Silver Tier benefits",
       "WRAI website presence",
@@ -36,8 +37,9 @@ const tiers: SponsorshipTier[] = [
     headline: "Support Our Progress",
     amount: "£1000-3000",
     headerClassName: "bg-[#C0C0C0] text-black",
-    cardClassName: "border-[#C0C0C0]",
     bodyClassName: "bg-[#1f242a]/55",
+    shadowClassName:
+      "shadow-[0_14px_34px_rgba(148,163,184,0.16)] md:hover:shadow-[0_22px_52px_rgba(148,163,184,0.25)]",
     benefits: [
       "Student access",
       "Logo on apparel",
@@ -65,7 +67,7 @@ export default function Sponsorship() {
             {tiers.map((tier) => (
               <article
                 key={tier.id}
-                className={`overflow-hidden border-2 bg-black/70 ${tier.cardClassName}`}
+                className={`overflow-hidden rounded-3xl bg-black/55 backdrop-blur-sm transition-all duration-300 ease-out md:hover:-translate-y-2 ${tier.shadowClassName}`}
               >
                 <header className={`px-6 py-6 text-center ${tier.headerClassName}`}>
                   <p className="text-xl font-semibold uppercase tracking-wide md:text-2xl">
