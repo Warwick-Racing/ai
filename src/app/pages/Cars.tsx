@@ -1,6 +1,7 @@
 import { Cpu, Camera, Gauge, Zap } from "lucide-react";
 import aiDevelopmentPlatform from "/content/gallery/warwick-ai-development-platform.jpg";
 import formulaStudentRacer from "/content/gallery/warwick-formula-student-racer.jpg";
+import PageHeader from "@/app/components/PageHeader";
 
 // 车辆图片
 const aiCar = aiDevelopmentPlatform;
@@ -45,17 +46,11 @@ export default function Cars() {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 bg-zinc-900">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            OUR VEHICLES
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            State-of-the-art autonomous racing platforms designed and built by our team
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Our Vehicles"
+        description="State-of-the-art autonomous racing platforms designed and built by our team"
+        containerClassName="max-w-7xl"
+      />
 
       {/* AI Development Car */}
       <section className="py-20 px-4">

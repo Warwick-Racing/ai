@@ -2,7 +2,7 @@
 title: "Photo Gallery Upload Quick Guide"
 date: "2026-02-10"
 author: "Sibo"
-tags: ["docs", "gallery", "guide"]
+tags: ["guide"]
 summary: "How to add new photos to the gallery by uploading files to a fixed folder in main."
 ---
 

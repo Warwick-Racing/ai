@@ -1,4 +1,5 @@
 import { Briefcase, Heart, Mail, MapPin, Phone } from "lucide-react";
+import PageHeader from "@/app/components/PageHeader";
 
 export default function Contact() {
   const contactInfo = [
@@ -44,15 +45,11 @@ export default function Contact() {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 bg-zinc-900">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">GET IN TOUCH</h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            Have questions or want to collaborate? We&apos;d love to hear from you.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Get in Touch"
+        description="Have questions or want to collaborate? We'd love to hear from you."
+        containerClassName="max-w-7xl"
+      />
 
       {/* Contact Information */}
       <section className="py-20 px-4">

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Briefcase, Brain, Code, Cpu } from "lucide-react";
+import PageHeader from "@/app/components/PageHeader";
 
 export default function Team() {
   const departments = [
@@ -35,18 +36,11 @@ export default function Team() {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 bg-zinc-900">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            OUR TEAM
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            A diverse group of students united by our passion for autonomous racing 
-            and pushing the boundaries of technology
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Our Team"
+        description="A diverse group of students united by our passion for autonomous racing and pushing the boundaries of technology"
+        containerClassName="max-w-7xl"
+      />
 
       {/* Sub-team Section */}
       <section className="py-20 px-4">

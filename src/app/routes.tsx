@@ -8,6 +8,7 @@ import Layout from "@/app/components/Layout";
 import Blog from "@/app/pages/Blog";
 import BlogPost from "@/app/pages/BlogPost";
 import Gallery from "@/app/pages/Gallery";
+import Sponsorship from "@/app/pages/Sponsorship";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
       { path: "gallery", element: <Gallery /> },
       { path: "cars", element: <Cars /> },
       { path: "events", element: <Events /> },
+      { path: "sponsorship", element: <Sponsorship /> },
       { path: "contact", element: <Contact /> },
       { path: "blog", element: <Blog /> },
       { path: "blog/:slug", element: <BlogPost /> },

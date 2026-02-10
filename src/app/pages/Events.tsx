@@ -1,4 +1,5 @@
 import { Calendar, MapPin, Trophy, Clock } from "lucide-react";
+import PageHeader from "@/app/components/PageHeader";
 
 export default function Events() {
   const upcomingEvents = [
@@ -48,17 +49,11 @@ export default function Events() {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 bg-zinc-900">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            EVENTS & COMPETITIONS
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            Follow our journey through competitions, testing days, and team milestones
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        title="Events & Competitions"
+        description="Follow our journey through competitions, testing days, and team milestones"
+        containerClassName="max-w-7xl"
+      />
 
       {/* Upcoming Events */}
       <section className="py-20 px-4">
