@@ -81,7 +81,7 @@ export default function Sponsorship() {
             {tiers.map((tier) => (
               <article
                 key={tier.id}
-                className={`relative overflow-hidden rounded-3xl backdrop-blur-sm transition-all duration-300 ease-out md:hover:-translate-y-2 ${tier.surfaceClassName} ${tier.shadowClassName}`}
+                className={`relative flex flex-col overflow-hidden rounded-3xl backdrop-blur-sm transition-all duration-300 ease-out md:hover:-translate-y-2 ${tier.surfaceClassName} ${tier.shadowClassName}`}
               >
                 <div
                   aria-hidden="true"
@@ -98,7 +98,7 @@ export default function Sponsorship() {
                   <p className="mt-2 text-4xl font-bold md:text-5xl">{tier.amount}</p>
                 </header>
 
-                <div className={`relative z-10 ${tier.bodyClassName}`}>
+                <div className={`relative z-10 flex-1 ${tier.bodyClassName}`}>
                   <ul className="space-y-5 px-6 py-8 md:px-8 md:py-10">
                     {tier.benefits.map((benefit) => (
                       <li key={benefit} className="flex items-start gap-3 text-xl text-white md:text-3xl">
