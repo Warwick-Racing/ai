@@ -7,7 +7,9 @@ type SponsorshipTier = {
   name: string;
   headline: string;
   amount: string;
-  topBarClassName: string;
+  headerClassName: string;
+  cardClassName: string;
+  bodyClassName: string;
   benefits: string[];
 };
 
@@ -17,7 +19,9 @@ const tiers: SponsorshipTier[] = [
     name: "Gold Tier",
     headline: "Become Part Of Our Team",
     amount: "£3001+",
-    topBarClassName: "bg-yellow-400 text-black",
+    headerClassName: "bg-[#D4AF37] text-black",
+    cardClassName: "border-[#D4AF37]",
+    bodyClassName: "bg-[#2e250d]/55",
     benefits: [
       "Includes all Silver Tier benefits",
       "WRAI website presence",
@@ -31,7 +35,9 @@ const tiers: SponsorshipTier[] = [
     name: "Silver Tier",
     headline: "Support Our Progress",
     amount: "£1000-3000",
-    topBarClassName: "bg-zinc-300 text-black",
+    headerClassName: "bg-[#C0C0C0] text-black",
+    cardClassName: "border-[#C0C0C0]",
+    bodyClassName: "bg-[#1f242a]/55",
     benefits: [
       "Student access",
       "Logo on apparel",
@@ -59,9 +65,9 @@ export default function Sponsorship() {
             {tiers.map((tier) => (
               <article
                 key={tier.id}
-                className="overflow-hidden border-2 border-green-500/80 bg-black/70"
+                className={`overflow-hidden border-2 bg-black/70 ${tier.cardClassName}`}
               >
-                <header className={`px-6 py-6 text-center ${tier.topBarClassName}`}>
+                <header className={`px-6 py-6 text-center ${tier.headerClassName}`}>
                   <p className="text-xl font-semibold uppercase tracking-wide md:text-2xl">
                     {tier.name}
                   </p>
@@ -71,14 +77,16 @@ export default function Sponsorship() {
                   <p className="mt-2 text-4xl font-bold md:text-5xl">{tier.amount}</p>
                 </header>
 
-                <ul className="space-y-5 px-6 py-8 md:px-8 md:py-10">
-                  {tier.benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-3 text-xl text-gray-100 md:text-3xl">
-                      <Check className="mt-1 h-6 w-6 shrink-0 text-green-400 md:h-8 md:w-8" />
-                      <span>{benefit}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className={tier.bodyClassName}>
+                  <ul className="space-y-5 px-6 py-8 md:px-8 md:py-10">
+                    {tier.benefits.map((benefit) => (
+                      <li key={benefit} className="flex items-start gap-3 text-xl text-gray-100 md:text-3xl">
+                        <Check className="mt-1 h-6 w-6 shrink-0 text-green-400 md:h-8 md:w-8" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </article>
             ))}
           </div>
