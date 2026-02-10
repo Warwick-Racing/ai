@@ -12,6 +12,9 @@ This is a quick guide for adding photos to the `/gallery` page.
 
 ## Upload Path
 
+You can find the project repository here:  
+[Warwick-Racing/ai](https://github.com/Warwick-Racing/ai/)
+
 Put image files in:
 
 `content/gallery/`
