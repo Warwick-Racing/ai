@@ -1,8 +1,9 @@
 import { ArrowRight, Zap, Users, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
+import formulaStudentRacer from "/content/gallery/warwick-formula-student-racer.jpg";
 
 // 车辆图片
-const testCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
+const testCar = formulaStudentRacer;
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tight">
-            WARWICK AI RACING
+            WARWICK RACING AI
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-300">
             University of Warwick's Autonomous Racing Team
@@ -76,7 +77,7 @@ export default function Home() {
               ABOUT OUR TEAM
             </h2>
             <p className="text-lg text-gray-300 mb-6">
-              Warwick AI Racing is the University of Warwick's first autonomous racing team, 
+              Warwick Racing AI is the University of Warwick's first autonomous racing team,
               dedicated to developing intelligent systems for the future of motorsport.
             </p>
             <p className="text-lg text-gray-300 mb-8">

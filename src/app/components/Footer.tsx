@@ -14,7 +14,7 @@ export default function Footer() {
             <div className="h-12 flex items-center mb-4 px-2">
               <img 
                 src={logoGreenSvg} 
-                alt="Warwick AI Racing" 
+                alt="Warwick Racing AI" 
                 className="h-full w-auto max-w-[200px] md:max-w-[250px] lg:max-w-[300px] object-contain object-left"
                 style={{ objectFit: 'contain', objectPosition: 'left center' }}
               />
@@ -65,6 +65,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/gallery" className="text-gray-400 hover:text-green-500 transition-colors">
+                  Photo Gallery
+                </Link>
+              </li>
+              <li>
                 <Link to="/events" className="text-gray-400 hover:text-green-500 transition-colors">
                   Events
                 </Link>
@@ -99,7 +104,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © 2026 Warwick AI Racing. All rights reserved.
+            © 2026 Warwick Racing AI. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-green-500 transition-colors">

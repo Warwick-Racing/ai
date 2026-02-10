@@ -11,11 +11,25 @@ export default function Navigation() {
 
   const navItems = [
     { path: "/", label: "HOME" },
+    { path: "/blog", label: "BLOG" },
     { path: "/team", label: "OUR TEAM" },
+    { path: "/gallery", label: "PHOTO GALLERY" },
     { path: "/cars", label: "CARS" },
     { path: "/events", label: "EVENTS" },
     { path: "/contact", label: "CONTACT US" },
   ];
+
+  const isActive = (path: string): boolean => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+
+    if (path === "/blog") {
+      return location.pathname === "/blog" || location.pathname.startsWith("/blog/");
+    }
+
+    return location.pathname === path;
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-zinc-800">
@@ -26,7 +40,7 @@ export default function Navigation() {
             <div className="h-12 flex items-center">
               <img 
                 src={logoGreen} 
-                alt="Warwick AI Racing" 
+                alt="Warwick Racing AI" 
                 className="h-full w-auto max-w-[200px] md:max-w-[250px] lg:max-w-[300px] object-contain object-left"
                 style={{ objectFit: 'contain', objectPosition: 'left center' }}
               />
@@ -40,7 +54,7 @@ export default function Navigation() {
                 key={item.path}
                 to={item.path}
                 className={`text-sm font-semibold tracking-wider transition-colors hover:text-green-500 ${
-                  location.pathname === item.path ? "text-green-500" : "text-white"
+                  isActive(item.path) ? "text-green-500" : "text-white"
                 }`}
               >
                 {item.label}
@@ -65,7 +79,7 @@ export default function Navigation() {
                 key={item.path}
                 to={item.path}
                 className={`block py-3 text-sm font-semibold tracking-wider transition-colors hover:text-green-500 ${
-                  location.pathname === item.path ? "text-green-500" : "text-white"
+                  isActive(item.path) ? "text-green-500" : "text-white"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >

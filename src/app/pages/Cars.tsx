@@ -1,8 +1,10 @@
 import { Cpu, Camera, Gauge, Zap } from "lucide-react";
+import aiDevelopmentPlatform from "/content/gallery/warwick-ai-development-platform.jpg";
+import formulaStudentRacer from "/content/gallery/warwick-formula-student-racer.jpg";
 
 // 车辆图片
-const aiCar = `${import.meta.env.BASE_URL}assets/ai-development-car.jpg`;
-const testCar = `${import.meta.env.BASE_URL}assets/formula-student-car.jpg`;
+const aiCar = aiDevelopmentPlatform;
+const testCar = formulaStudentRacer;
 
 export default function Cars() {
   const specs = [
