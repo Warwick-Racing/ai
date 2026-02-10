@@ -1,6 +1,6 @@
 import { Cpu, Camera, Gauge, Zap } from "lucide-react";
-import aiDevelopmentPlatform from "/content/gallery/warwick-ai-development-platform.jpg";
-import formulaStudentRacer from "/content/gallery/warwick-formula-student-racer.jpg";
+import aiDevelopmentPlatform from "/content/gallery/2025/warwick-ai-development-platform.jpg";
+import formulaStudentRacer from "/content/gallery/2025/warwick-formula-student-racer.jpg";
 import PageHeader from "@/app/components/PageHeader";
 
 // 车辆图片

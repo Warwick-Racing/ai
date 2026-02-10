@@ -1,6 +1,6 @@
 import { ArrowRight, Zap, Users, Trophy } from "lucide-react";
 import { Link } from "react-router-dom";
-import formulaStudentRacer from "/content/gallery/warwick-formula-student-racer.jpg";
+import formulaStudentRacer from "/content/gallery/2025/warwick-formula-student-racer.jpg";
 
 // 车辆图片
 const testCar = formulaStudentRacer;
