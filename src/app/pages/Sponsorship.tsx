@@ -7,9 +7,11 @@ type SponsorshipTier = {
   name: string;
   headline: string;
   amount: string;
+  surfaceClassName: string;
   headerClassName: string;
   bodyClassName: string;
   shadowClassName: string;
+  shineClassName: string;
   benefits: string[];
 };
 
@@ -19,10 +21,16 @@ const tiers: SponsorshipTier[] = [
     name: "Gold Tier",
     headline: "Become Part Of Our Team",
     amount: "£3001+",
-    headerClassName: "bg-[#D4AF37] text-black",
-    bodyClassName: "bg-[#2e250d]/55",
+    surfaceClassName:
+      "bg-[radial-gradient(circle_at_20%_-10%,rgba(255,232,164,0.22),transparent_48%),linear-gradient(180deg,rgba(26,21,8,0.92)_0%,rgba(18,14,8,0.95)_100%)]",
+    headerClassName:
+      "bg-[linear-gradient(135deg,#8b6b16_0%,#D4AF37_22%,#f7e8b3_44%,#D4AF37_67%,#8b6b16_100%)] text-black",
+    bodyClassName:
+      "bg-[linear-gradient(180deg,rgba(44,35,12,0.78)_0%,rgba(20,15,8,0.88)_100%)]",
     shadowClassName:
-      "shadow-[0_14px_34px_rgba(212,175,55,0.16)] md:hover:shadow-[0_22px_52px_rgba(212,175,55,0.26)]",
+      "shadow-[0_14px_36px_rgba(212,175,55,0.24)] md:hover:shadow-[0_26px_56px_rgba(212,175,55,0.38)]",
+    shineClassName:
+      "bg-[linear-gradient(115deg,rgba(255,255,255,0)_20%,rgba(255,248,220,0.34)_35%,rgba(255,255,255,0.07)_52%,rgba(255,255,255,0)_70%)]",
     benefits: [
       "Includes all Silver Tier benefits",
       "WRAI website presence",
@@ -36,10 +44,16 @@ const tiers: SponsorshipTier[] = [
     name: "Silver Tier",
     headline: "Support Our Progress",
     amount: "£1000-3000",
-    headerClassName: "bg-[#C0C0C0] text-black",
-    bodyClassName: "bg-[#1f242a]/55",
+    surfaceClassName:
+      "bg-[radial-gradient(circle_at_22%_-12%,rgba(237,239,242,0.18),transparent_45%),linear-gradient(180deg,rgba(12,16,22,0.92)_0%,rgba(10,13,18,0.95)_100%)]",
+    headerClassName:
+      "bg-[linear-gradient(135deg,#888f97_0%,#C0C0C0_24%,#f1f4f7_46%,#C0C0C0_70%,#888f97_100%)] text-black",
+    bodyClassName:
+      "bg-[linear-gradient(180deg,rgba(27,33,42,0.76)_0%,rgba(13,17,24,0.88)_100%)]",
     shadowClassName:
-      "shadow-[0_14px_34px_rgba(148,163,184,0.16)] md:hover:shadow-[0_22px_52px_rgba(148,163,184,0.25)]",
+      "shadow-[0_14px_36px_rgba(168,179,194,0.24)] md:hover:shadow-[0_26px_56px_rgba(168,179,194,0.36)]",
+    shineClassName:
+      "bg-[linear-gradient(115deg,rgba(255,255,255,0)_22%,rgba(255,255,255,0.4)_36%,rgba(255,255,255,0.08)_53%,rgba(255,255,255,0)_72%)]",
     benefits: [
       "Student access",
       "Logo on apparel",
@@ -67,9 +81,14 @@ export default function Sponsorship() {
             {tiers.map((tier) => (
               <article
                 key={tier.id}
-                className={`overflow-hidden rounded-3xl bg-black/55 backdrop-blur-sm transition-all duration-300 ease-out md:hover:-translate-y-2 ${tier.shadowClassName}`}
+                className={`relative overflow-hidden rounded-3xl backdrop-blur-sm transition-all duration-300 ease-out md:hover:-translate-y-2 ${tier.surfaceClassName} ${tier.shadowClassName}`}
               >
-                <header className={`px-6 py-6 text-center ${tier.headerClassName}`}>
+                <div
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute inset-0 z-0 ${tier.shineClassName}`}
+                />
+
+                <header className={`relative z-10 px-6 py-6 text-center ${tier.headerClassName}`}>
                   <p className="text-xl font-semibold uppercase tracking-wide md:text-2xl">
                     {tier.name}
                   </p>
@@ -79,12 +98,12 @@ export default function Sponsorship() {
                   <p className="mt-2 text-4xl font-bold md:text-5xl">{tier.amount}</p>
                 </header>
 
-                <div className={tier.bodyClassName}>
+                <div className={`relative z-10 ${tier.bodyClassName}`}>
                   <ul className="space-y-5 px-6 py-8 md:px-8 md:py-10">
                     {tier.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-start gap-3 text-xl text-gray-100 md:text-3xl">
+                      <li key={benefit} className="flex items-start gap-3 text-xl text-white md:text-3xl">
                         <Check className="mt-1 h-6 w-6 shrink-0 text-green-400 md:h-8 md:w-8" />
-                        <span>{benefit}</span>
+                        <span className="text-white">{benefit}</span>
                       </li>
                     ))}
                   </ul>
