@@ -1,4 +1,4 @@
-import { Briefcase, Heart, Mail, MapPin, Phone } from "lucide-react";
+import { Briefcase, Heart, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 import PageHeader from "@/app/components/PageHeader";
 
 export default function Contact() {
@@ -16,11 +16,18 @@ export default function Contact() {
       description: "Coventry, CV4 7AL, UK",
     },
     {
-      icon: <Phone className="w-6 h-6 text-green-500" />,
-      title: "Social Media",
-      value: "LinkedIn",
+      icon: <Linkedin className="w-6 h-6 text-green-500" />,
+      title: "LinkedIn",
+      value: "Warwick Racing AI",
       description: "Follow project updates and milestones",
       link: "https://www.linkedin.com/company/warwick-racing-ai/",
+    },
+    {
+      icon: <Instagram className="w-6 h-6 text-green-500" />,
+      title: "Instagram",
+      value: "@warwickracingai",
+      description: "Behind-the-scenes updates and events",
+      link: "https://www.instagram.com/warwickracingai?igsh=Zno4dmgxbmhremsy",
     },
   ];
 
@@ -57,7 +64,7 @@ export default function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             CONTACT INFORMATION
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
               <div
                 key={index}
@@ -90,7 +97,7 @@ export default function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold mb-8">CONTACT THE TEAM</h2>
           <p className="text-gray-300 mb-10 text-lg">
             For collaboration, media, and external partnership enquiries, reach us directly by
-            email or LinkedIn.
+            email, LinkedIn, or Instagram.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -106,6 +113,14 @@ export default function Contact() {
               className="border-2 border-green-500 hover:bg-green-500 hover:text-black text-green-500 px-8 py-4 text-base font-semibold tracking-wider transition-colors"
             >
               VISIT LINKEDIN
+            </a>
+            <a
+              href="https://www.instagram.com/warwickracingai?igsh=Zno4dmgxbmhremsy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-2 border-green-500 hover:bg-green-500 hover:text-black text-green-500 px-8 py-4 text-base font-semibold tracking-wider transition-colors"
+            >
+              VISIT INSTAGRAM
             </a>
           </div>
         </div>
