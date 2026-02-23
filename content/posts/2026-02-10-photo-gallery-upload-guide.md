@@ -2,7 +2,7 @@
 title: "Gallery + Team Photos Upload Guide"
 date: "2026-02-10"
 author: "Sibo"
-tags: ["guide", "gallery", "team"]
+tags: ["guide"]
 summary: "How to upload year-based gallery photos and sub-team carousel photos so both /gallery and /team update automatically."
 ---
 

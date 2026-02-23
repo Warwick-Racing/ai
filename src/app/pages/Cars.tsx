@@ -1,4 +1,4 @@
-import { Cpu, Camera, Gauge, Zap } from "lucide-react";
+import { Cpu, Camera } from "lucide-react";
 import aiDevelopmentPlatform from "/content/gallery/2025/warwick-ai-development-platform.jpg";
 import formulaStudentRacer from "/content/gallery/2025/warwick-formula-student-racer.jpg";
 import PageHeader from "@/app/components/PageHeader";
@@ -20,18 +20,6 @@ export default function Cars() {
       title: "Sensors",
       value: "LiDAR + Cameras",
       description: "Advanced perception system for environment mapping",
-    },
-    {
-      icon: <Gauge className="w-8 h-8 text-green-500" />,
-      title: "Performance",
-      value: "0-60 in 3.5s",
-      description: "Optimized for autonomous racing dynamics",
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-green-500" />,
-      title: "Power System",
-      value: "Electric Drivetrain",
-      description: "Efficient and responsive power delivery",
     },
   ];
 
@@ -102,7 +90,7 @@ export default function Cars() {
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                FORMULA STUDENT RACER
+                Formula Student: ADS-DV
               </h2>
               <p className="text-lg text-gray-300 mb-6">
                 Our competition vehicle represents the pinnacle of student engineering and 
@@ -136,7 +124,7 @@ export default function Cars() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             TECHNICAL SPECIFICATIONS
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {specs.map((spec, index) => (
               <div key={index} className="bg-black p-6 border border-zinc-800">
                 <div className="mb-4">{spec.icon}</div>

@@ -25,7 +25,7 @@ export default function Team() {
       icon: <Brain className="w-12 h-12 text-green-500" />,
       name: "Machine Learning & AI",
       description:
-        "Designs computer vision, sensor fusion, and model pipelines for robust autonomous perception.",
+        "Teaches the autonomous car to interpret the world through computer vision, sensor fusion, and model pipelines. The team brings together AI engineers, machine learning experts, and data scientists to build perception and planning models that guide the car’s decision-making on competition day.",
       members: ["Perception Engineers", "Machine Learning Engineers", "Computer Vision Specialists"],
     },
     {
@@ -33,15 +33,15 @@ export default function Team() {
       icon: <Code className="w-12 h-12 text-green-500" />,
       name: "Software",
       description:
-        "Builds planning, controls, and simulation tooling that powers reliable race-day autonomy.",
-      members: ["Planning Engineers", "Control Engineers", "Simulation Developers"],
+        "Creates the infrastructure that allows the car’s ML models, sensors, and hardware to work seamlessly together in real time. The team owns DevOps engineering, simulation tooling, and system architecture to ensure accurate perception, path planning, and steering control.",
+      members: ["Software Engineers/Developers", "Testers"],
     },
     {
       key: "hardware",
       icon: <Cpu className="w-12 h-12 text-green-500" />,
       name: "Hardware",
       description:
-        "Develops onboard electronics, embedded firmware, and integration infrastructure for the vehicle.",
+        "Builds and maintains the physical platform that makes autonomous racing possible, developing onboard electronics, embedded firmware, and integration infrastructure for the vehicle. The hardware team ensures the full vehicle remains robust and reliable under racing conditions.",
       members: ["Embedded Engineers", "Electronics Engineers", "Systems Integration Engineers"],
     },
     {
@@ -49,8 +49,8 @@ export default function Team() {
       icon: <Briefcase className="w-12 h-12 text-green-500" />,
       name: "Team Operations",
       description:
-        "Leads delivery planning, sponsorship relationships, and cross-team program coordination.",
-      members: ["Program Managers", "Partnership Leads", "Operations Coordinators"],
+        "Oversees and coordinates the other sub-teams’ work processes to keep development running smoothly. The operations team supports Formula Student AI filings, secures sponsorships, and increases WRAI’s campus-wide publicity so the team is ready for competition.",
+      members: ["Project Managers", "Sponsorship & Outreach Co-ordinators", "Marketing Leads"],
     },
   ];
 
@@ -68,6 +68,9 @@ export default function Team() {
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
             OUR SUB-TEAMS
           </h2>
+          <p className="mx-auto mb-12 max-w-5xl text-center text-lg text-gray-300">
+            Meet team WRAI. Our sub-teams have been working hard preparing for the 2026 competition—here’s what they do to help secure the win.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {departments.map((dept, index) => (
               <div
@@ -114,11 +117,13 @@ export default function Team() {
                       {images.map((image) => (
                         <CarouselItem key={image.src}>
                           <div className="relative overflow-hidden border border-zinc-800 bg-zinc-950">
-                            <img
-                              src={image.src}
-                              alt={image.alt}
-                              className="h-72 w-full object-cover md:h-96"
-                            />
+                            <div className="aspect-video w-full">
+                              <img
+                                src={image.src}
+                                alt={image.alt}
+                                className="h-full w-full object-contain"
+                              />
+                            </div>
                             <span className="absolute left-4 top-4 bg-black/75 border border-zinc-700 px-3 py-1 text-xs text-gray-200">
                               {image.year}
                             </span>
