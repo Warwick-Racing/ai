@@ -93,7 +93,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-gray-400">
                 <Mail className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">wrai@somewebsite.co.uk</span>
+                <span className="text-sm">wrai@warwick.ac.uk</span>
               </li>
               <li className="flex items-start gap-2 text-gray-400">
                 <MapPin className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />

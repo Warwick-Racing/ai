@@ -6,7 +6,7 @@ export default function Contact() {
     {
       icon: <Mail className="w-6 h-6 text-green-500" />,
       title: "Email",
-      value: "wrai@somewebsite.co.uk",
+      value: "wrai@warwick.ac.uk",
       description: "Reach the core team directly",
     },
     {
@@ -38,7 +38,7 @@ export default function Contact() {
       description:
         "Support autonomous racing research through sponsorship packages and technical collaboration.",
       action: "SPONSORSHIP ENQUIRY",
-      href: "mailto:wrai@somewebsite.co.uk?subject=Sponsorship%20Enquiry",
+      href: "mailto:wrai@warwick.ac.uk?subject=Sponsorship%20Enquiry",
     },
     {
       icon: <Heart className="w-12 h-12 text-green-500" />,
@@ -46,7 +46,7 @@ export default function Contact() {
       description:
         "Contribute equipment, mentoring, or domain expertise to accelerate testing and delivery.",
       action: "PARTNERSHIP ENQUIRY",
-      href: "mailto:wrai@somewebsite.co.uk?subject=Partnership%20Enquiry",
+      href: "mailto:wrai@warwick.ac.uk?subject=Partnership%20Enquiry",
     },
   ];
 
@@ -101,7 +101,7 @@ export default function Contact() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:wrai@somewebsite.co.uk"
+              href="mailto:wrai@warwick.ac.uk"
               className="bg-green-500 hover:bg-green-600 text-black px-8 py-4 text-base font-semibold tracking-wider transition-colors"
             >
               EMAIL US
