@@ -6,7 +6,6 @@ type SponsorshipTier = {
   id: string;
   name: string;
   headline: string;
-  amount: string;
   surfaceClassName: string;
   headerClassName: string;
   bodyClassName: string;
@@ -20,7 +19,6 @@ const tiers: SponsorshipTier[] = [
     id: "gold",
     name: "Gold Tier:",
     headline: "Become Part Of Our Team",
-    amount: "£3001+",
     surfaceClassName:
       "bg-[radial-gradient(circle_at_20%_-10%,rgba(255,232,164,0.22),transparent_48%),linear-gradient(180deg,rgba(26,21,8,0.92)_0%,rgba(18,14,8,0.95)_100%)]",
     headerClassName:
@@ -44,7 +42,6 @@ const tiers: SponsorshipTier[] = [
     id: "silver",
     name: "Silver Tier:",
     headline: "Support Our Progress",
-    amount: "£1000-3000",
     surfaceClassName:
       "bg-[radial-gradient(circle_at_22%_-12%,rgba(237,239,242,0.18),transparent_45%),linear-gradient(180deg,rgba(12,16,22,0.92)_0%,rgba(10,13,18,0.95)_100%)]",
     headerClassName:
@@ -96,7 +93,6 @@ export default function Sponsorship() {
                   <p className="mt-1 text-4xl font-bold uppercase tracking-tight md:text-5xl">
                     {tier.headline}
                   </p>
-                  <p className="mt-2 text-4xl font-bold md:text-5xl">{tier.amount}</p>
                 </header>
 
                 <div className={`relative z-10 flex-1 ${tier.bodyClassName}`}>
